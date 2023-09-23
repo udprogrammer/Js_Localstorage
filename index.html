@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Enter your Name :
+    <input type="text" id="names" placeholder="Name" /><br /><br />
+
+    Enter Your Age:
+    <input type="text" id="Age" placeholder="Age" /><br /><br />
+
+    <button onclick="myfun()">Save</button>
+    <button onclick="reset()">Clear</button>
+    <button onclick="element()">Click me</button>
+  </body>
+  <script>
+    function myfun() {
+      let name = document.getElementById("names").value;
+      let age = document.getElementById("Age").value;
+      const details = {
+        name: name,
+        age: age,
+      };
+      localStorage.setItem(name, JSON.stringify(details));
+      let data = JSON.parse(localStorage.getItem("personal"));
+      console.log(details);
+    }
+
+    function reset() {
+      localStorage.clear();
+    }
+
+    function element() {
+      let name = document.getElementById("names").value;
+      localStorage.removeItem(name);
+    }
+  </script>
+</html>
